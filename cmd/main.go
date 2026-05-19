@@ -6,7 +6,7 @@ import (
 	"hexa/internal/adapters/repository"
 	"hexa/internal/core/service"
 
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v5"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
