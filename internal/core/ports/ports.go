@@ -23,3 +23,13 @@ type ProductRepository interface {
 type ProductService interface {
 	GetAllProducts() ([]domain.Product, error)
 }
+
+
+type WalletRepository interface {
+	GetBalance(userID int) (int, error)
+}
+
+type WalletService interface {
+	GetBalance(userID int) (int, error) // Tambahkan ini
+	CanWithdraw(userID int, amount int) (bool, error)
+}

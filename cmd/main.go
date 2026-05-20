@@ -27,6 +27,10 @@ func main() {
 	productSvc := service.NewProductService(productRepo)
 	handler.NewHttpProductHandler(e, productSvc)
 
+	walletRepo := repository.NewWalletRepository(db)
+	walletSvc := service.NewWalletService(walletRepo)
+	handler.NewHttpWalletHandler(e, walletSvc) // Daftarkan di sini
+
 	// 3. Gunakan Port dari config struct
 	e.Start(cfg.AppPort)
 }
