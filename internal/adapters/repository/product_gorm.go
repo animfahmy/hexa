@@ -5,16 +5,16 @@ import (
 	"gorm.io/gorm"
 )
 
-type gormRepository struct {
+type GormRepositoryStruct struct {
 	db *gorm.DB
 }
 
-func NewGormRepository(db *gorm.DB) *gormRepository {
-	return &gormRepository{db: db}
+func NewGormRepository(db *gorm.DB) *GormRepositoryStruct {
+	return &GormRepositoryStruct{db: db}
 }
 
 // Implementasi fungsi FindAll dari interface ProductRepository
-func (r *gormRepository) FindAll() ([]domain.Product, error) {
+func (r *GormRepositoryStruct) FindAll() ([]domain.Product, error) {
 	var products []domain.Product
 	// GORM melakukan query ke table 'products'
 	result := r.db.Find(&products)

@@ -17,6 +17,13 @@ func NewHttpProductHandler(e *echo.Echo, svc ports.ProductService) {
 	e.GET("/products", handler.GetProducts)
 }
 
+// Tambahkan fungsi baru ini di bawah NewHttpProductHandler lama Anda:
+func NewHttpProductHandlerReturn(e *echo.Echo, svc ports.ProductService) *HttpProductHandler {
+	handler := &HttpProductHandler{service: svc}
+	e.GET("/products", handler.GetProducts)
+	return handler
+}
+
 func (h *HttpProductHandler) GetProducts(c *echo.Context) error {
 	products, err := h.service.GetAllProducts()
 	if err != nil {

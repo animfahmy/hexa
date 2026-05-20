@@ -6,17 +6,17 @@ import (
 )
 
 // PERBAIKAN: Ubah nama struct agar tidak bentrok dengan product_gorm.go
-type walletRepository struct {
+type WalletRepositoryStruct struct {
 	db *gorm.DB
 }
 
 // PERBAIKAN: Ubah nama constructor-nya
-func NewWalletRepository(db *gorm.DB) *walletRepository {
-	return &walletRepository{db: db}
+func NewWalletRepository(db *gorm.DB) *WalletRepositoryStruct {
+	return &WalletRepositoryStruct{db: db}
 }
 
 // PERBAIKAN: Sesuaikan dengan interface WalletRepository di ports.go
-func (r *walletRepository) GetBalance(userID int) (int, error) {
+func (r *WalletRepositoryStruct) GetBalance(userID int) (int, error) {
 	var wallet domain.Wallet
 	
 	// Query GORM untuk mengambil 1 data wallet berdasarkan UserID

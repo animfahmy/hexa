@@ -21,6 +21,14 @@ func NewHttpWalletHandler(e *echo.Echo, svc ports.WalletService) {
 	e.GET("/wallets/:id/withdraw/:nominal", handler.CheckWithdraw)
 }
 
+// Tambahkan fungsi baru ini di bawah NewHttpWalletHandler lama Anda:
+func NewHttpWalletHandlerReturn(e *echo.Echo, svc ports.WalletService) *HttpWalletHandler {
+	handler := &HttpWalletHandler{service: svc}
+	e.GET("/wallets/:id", handler.GetBalance)
+	e.GET("/wallets/:id/withdraw/:nominal", handler.CheckWithdraw)
+	return handler
+}
+
 // 1. Handler untuk Cek Saldo
 func (h *HttpWalletHandler) GetBalance(c *echo.Context) error {
 	// Ambil id dari parameter URL lalu konversi string ke int
